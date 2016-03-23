@@ -15,7 +15,7 @@
     ],
     "files": [
 		"../d.ts/references.d.ts",
-        "nativescript-intl.d.ts",
+        "index.d.ts",
         "nativescript-intl-common.ts",
         "nativescript-intl.android.ts",
         "nativescript-intl.ios.ts"

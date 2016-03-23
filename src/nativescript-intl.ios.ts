@@ -1,5 +1,5 @@
 import common = require("./nativescript-intl-common");
-import defModule = require("nativescript-intl");
+import * as Intl from "./intl";
 
 export class DateTimeFormat extends common.DateTimeFormat {
     public getNativePattern(patternDefinition: {date?: string, time?: string}, locale?: string): string {
@@ -34,7 +34,7 @@ export class DateTimeFormat extends common.DateTimeFormat {
 // minimumFractionDigits?: number;
 // maximumFractionDigits?: number;
 export class NumberFormat extends common.NumberFormat {
-    public formatNative(value: number, locale?: string, options?: defModule.NumberFormatOptions, pattern?: string) {
+    public formatNative(value: number, locale?: string, options?: Intl.NumberFormatOptions, pattern?: string) {
         let numberFormat = NSNumberFormatter.new();
         if (locale) {
             numberFormat.locale = NSLocale.alloc().initWithLocaleIdentifier(locale);

@@ -1,4 +1,4 @@
-import defModule = require("nativescript-intl");
+import * as Intl from "./intl";
 
 export var NUMERIC = 'numeric';
 export var LONG = 'long';
@@ -6,8 +6,8 @@ export var SHORT = 'short';
 export var TWODIGIT = '2-digit';
 export var FULL = 'full';
 
-export class DateTimeFormat implements defModule.DateTimeFormat {
-    constructor(private locale?: string, private options?: defModule.DateTimeFormatOptions, private pattern?: string) {
+export class DateTimeFormat implements Intl.DateTimeFormat {
+    constructor(private locale?: string, private options?: Intl.DateTimeFormatOptions, private pattern?: string) {
         if (options && options.minute === NUMERIC) {
             this.options.minute = TWODIGIT;
         }
@@ -16,11 +16,11 @@ export class DateTimeFormat implements defModule.DateTimeFormat {
         }
     }
     
-    private hasTimeOptions(options: defModule.DateTimeFormatOptions): boolean {
+    private hasTimeOptions(options: Intl.DateTimeFormatOptions): boolean {
         return options.hour !== undefined || options.minute !== undefined || options.second !== undefined;
     }
     
-    private hasDateOptions(options: defModule.DateTimeFormatOptions): boolean {
+    private hasDateOptions(options: Intl.DateTimeFormatOptions): boolean {
         return options.weekday !== undefined || options.year !== undefined || options.month !== undefined || options.day !== undefined;
     }
     
@@ -204,10 +204,10 @@ export class DateTimeFormat implements defModule.DateTimeFormat {
     }
 }
 
-export class NumberFormat implements defModule.NumberFormat {
-    constructor(private locale?: string, private options?: defModule.NumberFormatOptions, private pattern?: string) { }
+export class NumberFormat implements Intl.NumberFormat {
+    constructor(private locale?: string, private options?: Intl.NumberFormatOptions, private pattern?: string) { }
     
-    public formatNative(value: number, locale?: string, options?: defModule.NumberFormatOptions, pattern?: string): string {
+    public formatNative(value: number, locale?: string, options?: Intl.NumberFormatOptions, pattern?: string): string {
         return '';
     }
     

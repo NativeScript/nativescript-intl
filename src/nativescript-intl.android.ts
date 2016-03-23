@@ -1,5 +1,5 @@
 import common = require("./nativescript-intl-common");
-import defModule = require("nativescript-intl");
+import * as Intl from "./intl";
 
 var localesCache: Map<string, any> = new Map<string, any>();
 
@@ -105,7 +105,7 @@ export class DateTimeFormat extends common.DateTimeFormat {
 // minimumFractionDigits?: number;
 // maximumFractionDigits?: number;
 export class NumberFormat extends common.NumberFormat {
-    public formatNative(value: number, locale?: string, options?: defModule.NumberFormatOptions, pattern?: string) {
+    public formatNative(value: number, locale?: string, options?: Intl.NumberFormatOptions, pattern?: string) {
         let numberFormat;
         if (pattern) {
             numberFormat = new java.text.DecimalFormat(pattern);
