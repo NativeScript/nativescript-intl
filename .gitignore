@@ -1,0 +1,5 @@
+node_modules/
+.vscode/
+tests/platforms/
+tests/node_modules/
+dist/

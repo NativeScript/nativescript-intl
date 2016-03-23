@@ -1,0 +1,16 @@
+{
+    "name": "nativescript-intl",
+    "version": "0.0.1",
+    "description": "Provides API for using Native date, time and number formatting with an API similar to Intl.js",
+    "main": "nativescript-intl.js",
+    "nativescript": {
+        "platforms": {
+            "android": "1.6.2",
+            "ios": "1.6.0"
+        }
+    },
+    "keywords": [
+        "NativeScript", "localization", "globalization", "formatting"
+    ],
+    "author": "Nedyalko Nikolov <nedyalko.nikolov@telerik.com>"
+}
