@@ -2,11 +2,11 @@
   "nativescript": {
     "id": "org.nativescript.tests",
     "tns-android": {
-      "version": "2.4.0"
+      "version": "2.4.1"
     }
   },
   "dependencies": {
-    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.5.tgz",
+    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.6.tgz",
     "nativescript-unit-test-runner": "^0.3.3",
     "tns-core-modules": "^2.1.0"
   },

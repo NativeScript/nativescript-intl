@@ -1,70 +1,56 @@
-"use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var common = require("./nativescript-intl-common");
-var DateTimeFormat = (function (_super) {
-    __extends(DateTimeFormat, _super);
-    function DateTimeFormat() {
-        _super.apply(this, arguments);
-    }
-    DateTimeFormat.prototype.getNativePattern = function (patternDefinition, locale) {
-        var dateFormatter = NSDateFormatter.new();
+import { DateTimeFormat as commonDateTimeFormat, NumberFormat as commonNumberFormat, FULL } from "./nativescript-intl-common";
+export class DateTimeFormat extends commonDateTimeFormat {
+    getNativePattern(patternDefinition, locale) {
+        let dateFormatter = NSDateFormatter.new();
         if (locale) {
             dateFormatter.locale = NSLocale.alloc().initWithLocaleIdentifier(locale);
         }
         if (patternDefinition.date) {
-            dateFormatter.dateStyle = patternDefinition.date === common.FULL ? NSDateFormatterStyle.NSDateFormatterFullStyle : NSDateFormatterStyle.NSDateFormatterShortStyle;
+            dateFormatter.dateStyle = patternDefinition.date === FULL ?
+                4 :
+                1;
         }
         if (patternDefinition.time) {
-            dateFormatter.timeStyle = NSDateFormatterStyle.NSDateFormatterLongStyle;
+            dateFormatter.timeStyle = 3;
         }
         return dateFormatter.dateFormat;
-    };
-    DateTimeFormat.prototype.formatNative = function (pattern, locale, date) {
-        var dateFormatter = NSDateFormatter.new();
+    }
+    formatNative(pattern, locale, date) {
+        let dateFormatter = NSDateFormatter.new();
         if (locale) {
             dateFormatter.locale = NSLocale.alloc().initWithLocaleIdentifier(locale);
         }
         dateFormatter.dateFormat = pattern;
-        return dateFormatter.stringFromDate(date ? NSDate.dateWithTimeIntervalSince1970(date.valueOf() / 1000) : NSDate.new());
-    };
-    return DateTimeFormat;
-}(common.DateTimeFormat));
-exports.DateTimeFormat = DateTimeFormat;
-var NumberFormat = (function (_super) {
-    __extends(NumberFormat, _super);
-    function NumberFormat() {
-        _super.apply(this, arguments);
+        return dateFormatter.stringFromDate(date ? date : new Date());
     }
-    NumberFormat.prototype.formatNative = function (value, locale, options, pattern) {
-        var numberFormat = NSNumberFormatter.new();
+}
+export class NumberFormat extends commonNumberFormat {
+    formatNative(value, locale, options, pattern) {
+        let numberFormat = NSNumberFormatter.new();
         if (locale) {
             numberFormat.locale = NSLocale.alloc().initWithLocaleIdentifier(locale);
         }
         if (options) {
             switch (options.style.toLowerCase()) {
-                case 'decimal':
-                    numberFormat.numberStyle = NSNumberFormatterStyle.NSNumberFormatterDecimalStyle;
+                case "decimal":
+                    numberFormat.numberStyle = 1;
                     break;
-                case 'percent':
-                    numberFormat.numberStyle = NSNumberFormatterStyle.NSNumberFormatterPercentStyle;
+                case "percent":
+                    numberFormat.numberStyle = 3;
                     break;
-                case 'currency':
-                    numberFormat.numberStyle = NSNumberFormatterStyle.NSNumberFormatterCurrencyStyle;
+                case "currency":
+                    numberFormat.numberStyle = 2;
                     if (options.currency !== void 0) {
                         numberFormat.currencyCode = options.currency;
                     }
                     break;
                 default:
-                    numberFormat.numberStyle = NSNumberFormatterStyle.NSNumberFormatterDecimalStyle;
+                    numberFormat.numberStyle = 1;
                     break;
             }
         }
         else {
-            numberFormat.numberStyle = NSNumberFormatterStyle.NSNumberFormatterDecimalStyle;
+            numberFormat.numberStyle = 1;
         }
         if (options && options.minimumIntegerDigits !== void 0) {
             numberFormat.minimumIntegerDigits = options.minimumIntegerDigits;
@@ -82,14 +68,12 @@ var NumberFormat = (function (_super) {
             numberFormat.positiveFormat = pattern;
         }
         else {
-            if (options && (options.style.toLowerCase() === 'currency' && options.currencyDisplay === 'code')) {
-                var pattern_1 = numberFormat.positiveFormat;
-                pattern_1 = pattern_1.replace('¤', '¤¤');
-                numberFormat.positiveFormat = pattern_1;
+            if (options && (options.style.toLowerCase() === "currency" && options.currencyDisplay === "code")) {
+                let tempPattern = numberFormat.positiveFormat;
+                tempPattern = tempPattern.replace("¤", "¤¤");
+                numberFormat.positiveFormat = tempPattern;
             }
         }
-        return numberFormat.stringFromNumber(NSNumber.alloc().initWithDouble(value));
-    };
-    return NumberFormat;
-}(common.NumberFormat));
-exports.NumberFormat = NumberFormat;
+        return numberFormat.stringFromNumber(value);
+    }
+}

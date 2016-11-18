@@ -1,5 +1,13 @@
 {
-    "devDependencies": {
-        "typescript": "^1.8.9"
-    }
+  "scripts": {
+      "tslint": "tslint --project src/tsconfig.json --config src/tslint.json",
+      "tsc": "tsc -p src/tsconfig.json",
+      "create": "bash ./create.sh"
+  },
+  "devDependencies": {
+    "rollup": "^0.36.4",
+    "tns-platform-declarations": "^2.4.0-2016-09-28-1",
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.6"
+  }
 }

@@ -1,11 +1,10 @@
-"use strict";
-exports.NUMERIC = "numeric";
-exports.LONG = "long";
-exports.SHORT = "short";
-exports.TWODIGIT = "2-digit";
-exports.FULL = "full";
-var DateTimeFormat = (function () {
-    function DateTimeFormat(locale, options, pattern) {
+export const NUMERIC = "numeric";
+export const LONG = "long";
+export const SHORT = "short";
+export const TWODIGIT = "2-digit";
+export const FULL = "full";
+export class DateTimeFormat {
+    constructor(locale, options, pattern) {
         this.locale = locale;
         this.options = options;
         this.pattern = pattern;
@@ -23,50 +22,52 @@ var DateTimeFormat = (function () {
             "G": "era",
             "a": "hour12"
         };
-        if (options && options.minute === exports.NUMERIC) {
-            this.options.minute = exports.TWODIGIT;
+        if (options && options.minute === NUMERIC) {
+            this.options.minute = TWODIGIT;
         }
-        if (options && options.hour === exports.NUMERIC) {
-            this.options.hour = exports.TWODIGIT;
+        if (options && options.hour === NUMERIC) {
+            this.options.hour = TWODIGIT;
         }
     }
-    DateTimeFormat.prototype.hasTimeOptions = function (options) {
+    hasTimeOptions(options) {
         return options.hour !== undefined || options.minute !== undefined || options.second !== undefined;
-    };
-    DateTimeFormat.prototype.hasDateOptions = function (options) {
-        return options.weekday !== undefined || options.year !== undefined || options.month !== undefined || options.day !== undefined;
-    };
-    DateTimeFormat.prototype.useFullDatePattern = function (intlOptions) {
-        var i;
-        var propsArray = Object.keys(intlOptions);
-        var propsArrayLength = propsArray.length;
-        var result = false;
+    }
+    hasDateOptions(options) {
+        return options.weekday !== undefined ||
+            options.year !== undefined ||
+            options.month !== undefined ||
+            options.day !== undefined;
+    }
+    useFullDatePattern(intlOptions) {
+        let i;
+        let propsArray = Object.keys(intlOptions);
+        let propsArrayLength = propsArray.length;
+        let result = false;
         for (i = 0; i < propsArrayLength; i++) {
-            if (intlOptions[propsArray[i]] === exports.LONG || intlOptions[propsArray[i]] === exports.SHORT) {
+            if (intlOptions[propsArray[i]] === LONG || intlOptions[propsArray[i]] === SHORT) {
                 result = true;
                 break;
             }
         }
         return result;
-    };
-    DateTimeFormat.prototype.getNativePattern = function (patternDefinition, locale) {
+    }
+    getNativePattern(patternDefinition, locale) {
         return "";
-    };
-    DateTimeFormat.prototype.getCorrectPatternForLocale = function () {
-        var dateTimePatternOptions = {};
+    }
+    getCorrectPatternForLocale() {
+        let dateTimePatternOptions = {};
         if (this.hasDateOptions(this.options)) {
             if (this.useFullDatePattern(this.options)) {
-                dateTimePatternOptions.date = exports.FULL;
+                dateTimePatternOptions.date = FULL;
             }
             else {
-                dateTimePatternOptions.date = exports.SHORT;
+                dateTimePatternOptions.date = SHORT;
             }
         }
         if (this.hasTimeOptions(this.options)) {
-            dateTimePatternOptions.time = exports.FULL;
+            dateTimePatternOptions.time = FULL;
         }
-        var result = this.getNativePattern(dateTimePatternOptions, this.locale);
-        console.log("nativePattern: " + result);
+        let result = this.getNativePattern(dateTimePatternOptions, this.locale);
         if (this.options.hour) {
             if (this.options.hour12 !== undefined) {
                 result = this.options.hour12 ? result.replace(/H/g, "h") : result.replace(/h/g, "H");
@@ -76,19 +77,19 @@ var DateTimeFormat = (function () {
             }
         }
         return result;
-    };
-    DateTimeFormat.prototype.getDateElementsFromPattern = function (pattern) {
-        var result = [];
-        var patternLength = pattern.length;
-        var i = 0;
-        var stringInsidePattern = false;
+    }
+    getDateElementsFromPattern(pattern) {
+        let result = [];
+        let patternLength = pattern.length;
+        let i = 0;
+        let stringInsidePattern = false;
         while (i < patternLength) {
             if (pattern[i] === '"' || pattern[i] === "'") {
-                var p = i + 1;
+                let p = i + 1;
                 while (p < patternLength && pattern[i] !== pattern[p]) {
                     p++;
                 }
-                for (var j = i; j < p + 1; j++) {
+                for (let j = i; j < p + 1; j++) {
                     result.push({
                         "isDateElement": false,
                         "patternValue": pattern[j]
@@ -98,7 +99,7 @@ var DateTimeFormat = (function () {
                 continue;
             }
             if (this.dateTimeFormatElements.hasOwnProperty(pattern[i])) {
-                var j = i;
+                let j = i;
                 while (i < patternLength && pattern[i] === pattern[j]) {
                     i++;
                 }
@@ -117,16 +118,16 @@ var DateTimeFormat = (function () {
             }
         }
         return result;
-    };
-    DateTimeFormat.prototype.prepareDateElement = function (intlOption, dateElement) {
+    }
+    prepareDateElement(intlOption, dateElement) {
         switch (intlOption) {
-            case exports.NUMERIC:
+            case NUMERIC:
                 return dateElement;
-            case exports.TWODIGIT:
+            case TWODIGIT:
                 return dateElement.repeat(2);
-            case exports.SHORT:
+            case SHORT:
                 return dateElement.repeat(3);
-            case exports.LONG:
+            case LONG:
                 return dateElement.repeat(4);
             case true:
                 return dateElement;
@@ -135,22 +136,21 @@ var DateTimeFormat = (function () {
             default:
                 return dateElement;
         }
-    };
-    DateTimeFormat.prototype.preparePattern = function (pattern, options) {
-        console.log("preparePattern input - " + pattern);
-        var patternOptions = this.getDateElementsFromPattern(pattern);
-        var patternOptionsLength = patternOptions.length;
-        for (var i_1 = 0; i_1 < patternOptionsLength; i_1++) {
-            if (patternOptions[i_1].isDateElement) {
-                var formatChar = patternOptions[i_1].patternValue[0];
-                var intlOptionValue = options[patternOptions[i_1].intlOption];
+    }
+    preparePattern(pattern, options) {
+        let patternOptions = this.getDateElementsFromPattern(pattern);
+        let patternOptionsLength = patternOptions.length;
+        for (let i = 0; i < patternOptionsLength; i++) {
+            if (patternOptions[i].isDateElement) {
+                let formatChar = patternOptions[i].patternValue[0];
+                let intlOptionValue = options[patternOptions[i].intlOption];
                 if (intlOptionValue !== undefined) {
-                    var newPatternValue = this.prepareDateElement(intlOptionValue, formatChar);
-                    patternOptions[i_1].patternValue = newPatternValue;
+                    let newPatternValue = this.prepareDateElement(intlOptionValue, formatChar);
+                    patternOptions[i].patternValue = newPatternValue;
                 }
                 else {
-                    if (i_1 > 0) {
-                        var j = i_1 - 1;
+                    if (i > 0) {
+                        let j = i - 1;
                         while (patternOptions[j] && patternOptions[j].isDateElement === false) {
                             if (patternOptions[j].patternValue !== " ") {
                                 if (patternOptions[j].patternValue !== '"' && patternOptions[j].patternValue !== "'") {
@@ -164,58 +164,48 @@ var DateTimeFormat = (function () {
                             j--;
                         }
                     }
-                    patternOptions[i_1].patternValue = "";
+                    patternOptions[i].patternValue = "";
                 }
             }
         }
-        var result = [];
-        var i = 0;
+        let result = [];
+        let i = 0;
         while (patternOptions[i].patternValue === "" || patternOptions[i].isDateElement === false) {
             i++;
         }
         for (i; i < patternOptionsLength; i++) {
             result.push(patternOptions[i].patternValue);
         }
-        console.log("preparePattern output - " + result.join(""));
         return result.join("");
-    };
-    DateTimeFormat.prototype.formatNative = function (pattern, locale, date) {
+    }
+    formatNative(pattern, locale, date) {
         return "";
-    };
-    Object.defineProperty(DateTimeFormat.prototype, "preparedPattern", {
-        get: function () {
-            if (!this._preparedPattern) {
-                if (this.pattern) {
-                    this._preparedPattern = this.pattern;
-                }
-                else {
-                    this._preparedPattern = this.preparePattern(this.getCorrectPatternForLocale(), this.options);
-                }
+    }
+    get preparedPattern() {
+        if (!this._preparedPattern) {
+            if (this.pattern) {
+                this._preparedPattern = this.pattern;
             }
-            console.log("preparedPattern: " + this._preparedPattern);
-            return this._preparedPattern;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    DateTimeFormat.prototype.format = function (date) {
+            else {
+                this._preparedPattern = this.preparePattern(this.getCorrectPatternForLocale(), this.options);
+            }
+        }
+        return this._preparedPattern;
+    }
+    format(date) {
         return this.formatNative(this.preparedPattern, this.locale, date);
-    };
-    return DateTimeFormat;
-}());
-exports.DateTimeFormat = DateTimeFormat;
-var NumberFormat = (function () {
-    function NumberFormat(locale, options, pattern) {
+    }
+}
+export class NumberFormat {
+    constructor(locale, options, pattern) {
         this.locale = locale;
         this.options = options;
         this.pattern = pattern;
     }
-    NumberFormat.prototype.formatNative = function (value, locale, options, pattern) {
+    formatNative(value, locale, options, pattern) {
         return "";
-    };
-    NumberFormat.prototype.format = function (value) {
+    }
+    format(value) {
         return this.formatNative(value, this.locale, this.options, this.pattern);
-    };
-    return NumberFormat;
-}());
-exports.NumberFormat = NumberFormat;
+    }
+}
