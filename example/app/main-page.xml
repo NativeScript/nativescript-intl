@@ -1,0 +1,13 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigating">
+    <StackLayout class="p-20">
+        <Button text="TAP" tap="onTap" class="btn btn-primary btn-active"/>
+        <Label text="fullDateOptions" class="h2 text-center" textWrap="true"/>
+        <Label text="{{ fullDateOptions }}" class="h2 text-center" textWrap="true"/>
+        <Label text="longDateOptions" class="h2 text-center" textWrap="true"/>
+        <Label text="{{ longDateOptions }}" class="h2 text-center" textWrap="true"/>
+        <Label text="mediumDateTimeOptions" class="h2 text-center" textWrap="true"/>
+        <Label text="{{ mediumDateTimeOptions }}" class="h2 text-center" textWrap="true"/>
+        <Label text="shortDateTimeOptions" class="h2 text-center" textWrap="true"/>
+        <Label text="{{ shortDateTimeOptions }}" class="h2 text-center" textWrap="true"/>
+    </StackLayout>
+</Page>

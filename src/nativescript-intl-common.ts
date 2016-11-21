@@ -1,12 +1,10 @@
-import * as Intl from "./intl";
+export var NUMERIC = "numeric";
+export var LONG = "long";
+export var SHORT = "short";
+export var TWODIGIT = "2-digit";
+export var FULL = "full";
 
-export var NUMERIC = 'numeric';
-export var LONG = 'long';
-export var SHORT = 'short';
-export var TWODIGIT = '2-digit';
-export var FULL = 'full';
-
-export class DateTimeFormat implements Intl.DateTimeFormat {
+export class DateTimeFormat {
     constructor(private locale?: string, private options?: Intl.DateTimeFormatOptions, private pattern?: string) {
         if (options && options.minute === NUMERIC) {
             this.options.minute = TWODIGIT;
@@ -39,7 +37,7 @@ export class DateTimeFormat implements Intl.DateTimeFormat {
     }
     
     public getNativePattern(patternDefinition: {date?: string, time?: string}, locale?: string): string {
-        return '';
+        return "";
     }
     
     private getCorrectPatternForLocale(): string {
@@ -57,28 +55,28 @@ export class DateTimeFormat implements Intl.DateTimeFormat {
         }
         let result = this.getNativePattern(dateTimePatternOptions, this.locale);
         if (this.options.hour) {
-            if (result.indexOf('H') > -1) {
-                this.options.hour12 = false;
+            if (this.options.hour12 !== undefined) {
+                result = this.options.hour12 ? result.replace(/H/g, "h") : result.replace(/h/g, "H");   
             } else {
-                this.options.hour12 = true;
+                this.options.hour12 = !(result.indexOf("H") > -1); 
             }
         }
         return result;
     }
     
     private dateTimeFormatElements = {
-        'M': 'month',
-        'E': 'weekday',
-        'c': 'weekday',
-        'd': 'day',
-        'y': 'year',
-        'h': 'hour',
-        'H': 'hour',
-        'm': 'minute',
-        's': 'second',
-        'z': 'timeZoneName',
-        'G': 'era',
-        'a': 'hour12'
+        "M": "month",
+        "E": "weekday",
+        "c": "weekday",
+        "d": "day",
+        "y": "year",
+        "h": "hour",
+        "H": "hour",
+        "m": "minute",
+        "s": "second",
+        "z": "timeZoneName",
+        "G": "era",
+        "a": "hour12"
     };
     
     // isDateElement (boolean), patternValue - dateElement content, intlOption - corresponding Intl option name
@@ -137,7 +135,7 @@ export class DateTimeFormat implements Intl.DateTimeFormat {
             case true:
                 return dateElement;
             case false:
-                return '';
+                return "";
             default:
                 return dateElement;
         }
@@ -158,33 +156,33 @@ export class DateTimeFormat implements Intl.DateTimeFormat {
                     if (i > 0) {
                         let j = i - 1;
                         while (patternOptions[j] && patternOptions[j].isDateElement === false) {
-                            if (patternOptions[j].patternValue !== ' ') {
+                            if (patternOptions[j].patternValue !== " ") {
                                 if (patternOptions[j].patternValue !== '"' && patternOptions[j].patternValue !== "'") {
-                                    patternOptions[j].patternValue = '';
+                                    patternOptions[j].patternValue = "";
                                 }
                                 break;
                             } else {
-                                patternOptions[j].patternValue = '';
+                                patternOptions[j].patternValue = "";
                             }
                             j--;
                         }
                     }
-                    patternOptions[i].patternValue = '';
+                    patternOptions[i].patternValue = "";
                 }
             }
         }
         let result = [];
         let i = 0;
         // remove leading delimiters
-        while(patternOptions[i].patternValue === '' || patternOptions[i].isDateElement === false) {i++;}
+        while(patternOptions[i].patternValue === "" || patternOptions[i].isDateElement === false) {i++;}
         for(i; i < patternOptionsLength; i++) {
             result.push(patternOptions[i].patternValue);
         }
-        return result.join('');
+        return result.join("");
     }
     
     public formatNative(pattern: string, locale?: string, date?: Date): string {
-        return '';
+        return "";
     }
     
     private _preparedPattern: string;
@@ -204,11 +202,11 @@ export class DateTimeFormat implements Intl.DateTimeFormat {
     }
 }
 
-export class NumberFormat implements Intl.NumberFormat {
+export class NumberFormat {
     constructor(private locale?: string, private options?: Intl.NumberFormatOptions, private pattern?: string) { }
     
     public formatNative(value: number, locale?: string, options?: Intl.NumberFormatOptions, pattern?: string): string {
-        return '';
+        return "";
     }
     
     public format(value: number) {

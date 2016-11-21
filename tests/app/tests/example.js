@@ -2,6 +2,7 @@ var intl = require("nativescript-intl");
 var platform = require("platform");
 
 var locales = [
+    "en-US",
     "de-AT",
     "nl-BE",
     "fr-BE",
@@ -33,11 +34,11 @@ var locales = [
     "tr-TR",
     "uk-UA",
     "en-GB",
-    "en-US",
     "no-NO"
 ];
 
 var longDateResults = [
+    "March 21, 2016",
     "21. März 2016",
     "21 maart 2016",
     "21 mars 2016",
@@ -69,11 +70,11 @@ var longDateResults = [
     "21 Mart 2016",
     "21 березня 2016 р.",
     "21 March 2016",
-    "March 21, 2016",
     "21. mars 2016"
 ];
 
 var mediumDateTimeResultsAndroid = [
+    "Mar 22, 2016 09:40:39 AM", //Mar 22, 2016, 9:40:39 AM
     "22. März 2016 09:40:39", //22. März 2016, 09:40:39
     "22 mrt. 2016 09:40:39",
     "22 mars 2016 09:40:39",
@@ -105,11 +106,11 @@ var mediumDateTimeResultsAndroid = [
     "22 Mar 2016 09:40:39",
     "22 бер. 2016 р. 09:40:39", //22 бер. 2016 09:40:39
     "22 Mar 2016 09:40:39", //22 Mar 2016, 09:40:39
-    "Mar 22, 2016 09:40:39 AM", //Mar 22, 2016, 9:40:39 AM
     "22. mar. 2016 09.40.39" //22. mar. 2016, 09.40.39
 ];
 
 var mediumDateTimeResultsIOS = [
+    "Mar 22, 2016 at 09:40:39 AM", //Mar 22, 2016, 9:40:39 AM
     "22. März 2016 um 09:40:39", //22. März 2016, 09:40:39
     "22 mrt. 2016 09:40:39",
     "22 mars 2016 09:40:39",
@@ -141,11 +142,11 @@ var mediumDateTimeResultsIOS = [
     "22 Mar 2016 09:40:39",
     "22 бер. 2016 р. 09:40:39", //22 бер. 2016 09:40:39
     "22 Mar 2016 at 09:40:39", //22 Mar 2016, 09:40:39
-    "Mar 22, 2016 at 09:40:39 AM", //Mar 22, 2016, 9:40:39 AM
     "22. mar. 2016 09.40.39" //22. mar. 2016, 09.40.39
 ];
 
 var shortDateTimeResultsAndroid = [
+    "3/22/2016 11:06 AM", //3/22/2016, 11:06 AM
     "22.3.2016 11:06", //22.3.2016, 11:06
     "22/3/2016 11:06", //22-3-2016 11:06
     "22/3/2016 11:06",
@@ -177,11 +178,11 @@ var shortDateTimeResultsAndroid = [
     "22 3 2016 11:06", //22.03.2016 11:06
     "22.3.2016 11:06", //22.03.2016 11:06
     "22/3/2016 11:06", //22/03/2016, 11:06
-    "3/22/2016 11:06 AM", //3/22/2016, 11:06 AM
     "22.3.2016 11.06" //22.3.2016, 11.06
 ];
 
 var shortDateTimeResultsIOS = [
+    "3/22/2016, 11:06 AM",
     "22.3.2016, 11:06",
     "22/3/2016 11:06", //22-3-2016 11:06
     "22/3/2016 11:06",
@@ -213,11 +214,11 @@ var shortDateTimeResultsIOS = [
     "22.3.2016 11:06", //22.03.2016 11:06
     "22.3.2016 11:06", //22.03.2016 11:06
     "22/3/2016, 11:06", //22/03/2016, 11:06
-    "3/22/2016, 11:06 AM",
     "22.3.2016, 11.06"
 ];
 
 var fullDateResults = [
+    "Tuesday, March 22, 2016",
     "Dienstag, 22. März 2016",
     "dinsdag 22 maart 2016",
     "mardi 22 mars 2016",
@@ -249,11 +250,11 @@ var fullDateResults = [
     "22 Mart 2016 Salı",
     "вівторок, 22 березня 2016 р.",
     "Tuesday, 22 March 2016",
-    "Tuesday, March 22, 2016",
     "tirsdag 22. mars 2016"
 ];
 
 var mediumDateResultsAndroid = [
+    "Mar 22, 2016",
     "22. März 2016",
     "22 mrt. 2016",
     "22 mars 2016",
@@ -285,11 +286,11 @@ var mediumDateResultsAndroid = [
     "22 Mar 2016",
     "22 бер. 2016 р.", //22 бер. 2016
     "22 Mar 2016",
-    "Mar 22, 2016",
     "22. mar. 2016"
 ];
 
 var mediumDateResultsIOS = [
+    "Mar 22, 2016",
     "22. März 2016",
     "22 mrt. 2016",
     "22 mars 2016",
@@ -321,11 +322,11 @@ var mediumDateResultsIOS = [
     "22 Mar 2016",
     "22 бер. 2016 р.", //22 бер. 2016
     "22 Mar 2016",
-    "Mar 22, 2016",
     "22. mar. 2016"
 ];
 
 var shortDateResultsAndroid = [
+    "10/22/2016",
     "22.10.2016",
     "22/10/2016", //22-10-2016
     "22/10/2016",
@@ -357,11 +358,11 @@ var shortDateResultsAndroid = [
     "22 10 2016", //22.10.2016
     "22.10.2016",
     "22/10/2016",
-    "10/22/2016",
     "22.10.2016"
 ];
 
 var shortDateResultsIOS = [
+    "10/22/2016",
     "22.10.2016",
     "22/10/2016", //22-10-2016
     "22/10/2016",
@@ -393,11 +394,11 @@ var shortDateResultsIOS = [
     "22.10.2016",
     "22.10.2016",
     "22/10/2016",
-    "10/22/2016",
     "22.10.2016"
 ];
 
 var mediumTimeResultsAndroid = [
+    "12:05:39 PM",
     "12:05:39",
     "12:05:39",
     "12:05:39",
@@ -429,11 +430,11 @@ var mediumTimeResultsAndroid = [
     "12:05:39",
     "12:05:39",
     "12:05:39",
-    "12:05:39 PM",
     "12.05.39"
 ];
 
 var mediumTimeResultsIOS = [
+    "12:05:39 PM",
     "12:05:39",
     "12:05:39",
     "12:05:39",
@@ -465,11 +466,11 @@ var mediumTimeResultsIOS = [
     "12:05:39",
     "12:05:39",
     "12:05:39",
-    "12:05:39 PM",
     "12.05.39"
 ];
 
 var shortTimeResultsAndroid = [
+    "12:13 PM",
     "12:13",
     "12:13",
     "12:13",
@@ -501,11 +502,11 @@ var shortTimeResultsAndroid = [
     "12:13",
     "12:13",
     "12:13",
-    "12:13 PM",
     "12.13"
 ];
 
 var shortTimeResultsIOS = [
+    "12:13 PM",
     "12:13",
     "12:13",
     "12:13",
@@ -537,11 +538,11 @@ var shortTimeResultsIOS = [
     "12:13",
     "12:13",
     "12:13",
-    "12:13 PM",
     "12.13"
 ];
 
 var customPatternResults = [
+    "2016 October 22, Saturday 12:13:39",
     "2016 Oktober 22, Samstag 12:13:39",
     "2016 oktober 22, zaterdag 12:13:39",
     "2016 octobre 22, samedi 12:13:39",
@@ -572,7 +573,6 @@ var customPatternResults = [
     "2016 Oktober 22, Samstag 12:13:39",
     "2016 Ekim 22, Cumartesi 12:13:39",
     "2016 жовтня 22, субота 12:13:39",
-    "2016 October 22, Saturday 12:13:39",
     "2016 October 22, Saturday 12:13:39",
     "2016 oktober 22, lørdag 12:13:39"
 ]
@@ -835,6 +835,7 @@ describe('NativeScript-Intl-DateTimeFormat', function () {
 });
 
 var currencyCodes = [
+    "USD",
     'EUR',
     'EUR',
     'EUR',
@@ -866,11 +867,11 @@ var currencyCodes = [
     "TRY",
     "UAH",
     "GBP",
-    "USD",
     "NOK"
 ];
 
 var currencyCodesResultsAndroid = [
+    "USD123456.79",
     "EUR 123456,79",
     "123456,79 EUR", // EUR 123456,79
     "123456,79 EUR",
@@ -902,11 +903,11 @@ var currencyCodesResultsAndroid = [
     "TRY123456,79", //123456,79 TRY
     "123456,79 UAH",
     "GBP123456.79",
-    "USD123456.79",
     "NOK 123456,79"
 ];
 
 var currencyCodesResultsIOS = [
+    "USD123456.79",
     "EUR 123456,79",
     "123456,79 EUR", // EUR 123456,79
     "123456,79 EUR",
@@ -938,11 +939,11 @@ var currencyCodesResultsIOS = [
     "TRY123456,79", //123456,79 TRY
     "123456,79 UAH",
     "GBP123456.79",
-    "USD123456.79",
     "NOK 123456,79"
 ];
 
 var currencyCodesGroupingResultsAndroid = [
+    "USD123,456.79",
     "EUR 123 456,79",
     "123.456,79 EUR", //EUR 123.456,79"
     "123.456,79 EUR", //123 456,79 EUR
@@ -974,11 +975,11 @@ var currencyCodesGroupingResultsAndroid = [
     "TRY123.456,79", //123.456,79 TRY
     "123 456,79 UAH",
     "GBP123,456.79",
-    "USD123,456.79",
     "NOK 123 456,79"
 ];
 
 var currencyCodesGroupingResultsIOS = [
+    "USD123,456.79",
     "EUR 123.456,79",
     "123.456,79 EUR", //EUR 123.456,79"
     "123.456,79 EUR", //123 456,79 EUR
@@ -1010,11 +1011,11 @@ var currencyCodesGroupingResultsIOS = [
     "TRY123.456,79", //123.456,79 TRY
     "123 456,79 UAH",
     "GBP123,456.79",
-    "USD123,456.79",
     "NOK 123 456,79"
 ];
 
 var currencyCodesSymbolResultsAndroid = [
+    "$123456.79",
     "€ 123456,79",
     "123456,79 €", //€ 123456,79
     "123456,79 €",
@@ -1046,11 +1047,11 @@ var currencyCodesSymbolResultsAndroid = [
     "₺123456,79", //123456,79 TL
     "123456,79 ₴",
     "£123456.79",
-    "$123456.79",
     "kr 123456,79"
 ];
 
 var currencyCodesSymbolResultsIOS = [
+    "$123456.79",
     "€ 123456,79",
     "123456,79 €", //€ 123456,79
     "123456,79 €",
@@ -1082,11 +1083,11 @@ var currencyCodesSymbolResultsIOS = [
     "₺123456,79", //123456,79 TL
     "123456,79 ₴",
     "£123456.79",
-    "$123456.79",
     "kr 123456,79"
 ];
 
 var percentResults = [
+    "12,345,679%",
     "12 345 679 %",
     "12.345.679%",
     "12.345.679 %", //12 345 679 %
@@ -1118,11 +1119,11 @@ var percentResults = [
     "%12.345.679",
     "12 345 679%",
     "12,345,679%",
-    "12,345,679%",
     "12 345 679 %"
 ];
 
 var decimalResults = [
+    "123,456.79",
     "123 456,79",
     "123.456,79",
     "123.456,79", //123 456,79
@@ -1154,11 +1155,11 @@ var decimalResults = [
     "123.456,79",
     "123 456,79",
     "123,456.79",
-    "123,456.79",
     "123 456,79"
 ];
 
 var customNumberPatternResultsAndroid = [
+    "123,456.79 $",
     "123 456,79 €",
     "123.456,79 €",
     "123.456,79 €",
@@ -1190,11 +1191,11 @@ var customNumberPatternResultsAndroid = [
     "123.456,79 ₺",
     "123 456,79 ₴",
     "123,456.79 £",
-    "123,456.79 $",
     "123 456,79 kr"
 ];
 
 var customNumberPatternResultsIOS = [
+    "123,456.79 $",
     "123.456,79 €",
     "123.456,79 €",
     "123.456,79 €",
@@ -1226,7 +1227,6 @@ var customNumberPatternResultsIOS = [
     "123.456,79 ₺",
     "123 456,79 ₴",
     "123,456.79 £",
-    "123,456.79 $",
     "123 456,79 kr"
 ];
 
