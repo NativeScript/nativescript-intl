@@ -2,4 +2,6 @@ node_modules/
 .vscode/
 tests/platforms/
 tests/node_modules/
+example/node_modules/
+example/platforms/
 dist/

@@ -1,1 +1,1 @@
-export * from "./intl";
+export * from "./nativescript-intl-common";

@@ -1,5 +1,4 @@
 import common = require("./nativescript-intl-common");
-import * as Intl from "./intl";
 
 export class DateTimeFormat extends common.DateTimeFormat {
     public getNativePattern(patternDefinition: {date?: string, time?: string}, locale?: string): string {

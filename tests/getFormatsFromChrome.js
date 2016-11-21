@@ -1,4 +1,5 @@
 var locales = [
+    "en-US",
     "de-AT",
     "nl-BE",
     "fr-BE",
@@ -30,7 +31,6 @@ var locales = [
     "tr-TR",
     "uk-UA",
     "en-GB",
-    "en-US",
     "nb-NO"
 ];
 
@@ -107,6 +107,7 @@ var dateTimeOptions = [
 ];
 
 var currencyCodes = [
+    "USD",
     'EUR',
     'EUR',
     'EUR',
@@ -138,7 +139,6 @@ var currencyCodes = [
     "TRY",
     "UAH",
     "GBP",
-    "USD",
     "NOK"
 ];
 
@@ -197,10 +197,12 @@ var numberOptions = [
 var getDateTimeFormatForLocales = function () {
     var i;
     var j;
+    var testDate = new Date(2016, 2, 22, 19, 40, 39);
     for (j = 0; j < dateTimeOptions.length; j++) {
         console.log(dateTimeOptions[j].optionsName);
         for (i = 0; i < locales.length; i++) {
-            console.log(locales[i] + '"' + new Intl.DateTimeFormat(locales[i], dateTimeOptions[j].options).format(new Date(2016, 2, 22, 9, 40, 39)) + '",');
+            var result = new Intl.DateTimeFormat(locales[i], dateTimeOptions[j].options).format(testDate);
+            console.log(`\"${locales[i]} - \"${result}\"`);
         }
         console.log("");
     }
@@ -215,14 +217,18 @@ var getNumberFormatForLocales = function () {
         for (i = 0; i < locales.length; i++) {
             var updatedCurrencyOptions = currencyOptions[j].options;
             updatedCurrencyOptions.currency = currencyCodes[i];
-            console.log(locales[i] + '"' + new Intl.NumberFormat(locales[i], updatedCurrencyOptions).format(testNumber) + '",');
+            var resultCurrency = new Intl.NumberFormat(locales[i], updatedCurrencyOptions).format(testNumber);
+            //console.log(locales[i] + '"' + result + '",');
+            console.log(`\"${locales[i]} - \"${resultCurrency}\"`);
         }
         console.log("");
     }
     for (j = 0; j < numberOptions.length; j++) {
         console.log(numberOptions[j].optionsName);
         for (i = 0; i < locales.length; i++) {
-            console.log(locales[i] + '"' + new Intl.NumberFormat(locales[i], numberOptions[j].options).format(testNumber) + '",');
+            var resultNumber = new Intl.NumberFormat(locales[i], numberOptions[j].options).format(testNumber);
+            //console.log(locales[i] + '"' + resultNumber + '",');
+            console.log(`\"${locales[i]} - \"${resultNumber}\"`);
         }
         console.log("");
     }

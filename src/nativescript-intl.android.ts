@@ -1,5 +1,4 @@
 import common = require("./nativescript-intl-common");
-import * as Intl from "./intl";
 
 var localesCache: Map<string, any> = new Map<string, any>();
 
