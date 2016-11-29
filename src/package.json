@@ -2,11 +2,12 @@
     "name": "nativescript-intl",
     "version": "0.0.6",
     "description": "Provides API for using Native date, time and number formatting with an API similar to Intl.js",
-    "main": "nativescript-intl",
+    "main": "bundle",
+    "module": "nativescript-intl",
     "nativescript": {
         "platforms": {
-            "android": "2.1.0",
-            "ios": "2.1.0"
+            "android": "2.3.0",
+            "ios": "2.3.0"
         }
     },
     "keywords": [
