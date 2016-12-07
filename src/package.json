@@ -3,7 +3,7 @@
     "version": "0.0.7",
     "description": "Provides API for using Native date, time and number formatting with an API similar to Intl.js",
     "main": "bundle",
-    "module": "nativescript-intl",
+    "module": "index",
     "nativescript": {
         "platforms": {
             "android": "2.3.0",
