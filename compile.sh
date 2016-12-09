@@ -21,6 +21,7 @@ mkdir -p "$PACK_DIR"
 # compile ts
 node_modules/.bin/tsc -p "$SOURCE_DIR" --outDir "$PACK_DIR"
 
+# run tslint
 node_modules/tslint/bin/tslint --project "$SOURCE_DIR"/tsconfig.json --config "$SOURCE_DIR"/tslint.json
 
 # make commonjs bundle for ANDROID 
