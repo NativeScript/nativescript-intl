@@ -12,7 +12,7 @@
   "dependencies": {
     "nativescript-theme-core": "^0.2.1",
     "tns-core-modules": "2.4.0",
-    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.5.tgz"
+    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.9.tgz"
   },
   "devDependencies": {
     "babel-traverse": "6.19.0",

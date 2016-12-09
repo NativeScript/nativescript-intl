@@ -6,7 +6,7 @@
     }
   },
   "dependencies": {
-    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.6.tgz",
+    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.9.tgz",
     "nativescript-unit-test-runner": "^0.3.3",
     "tns-core-modules": "^2.1.0"
   },
