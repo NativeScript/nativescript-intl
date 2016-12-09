@@ -10,6 +10,7 @@ export const LONG = "long";
 export const SHORT = "short";
 export const TWODIGIT = "2-digit";
 export const FULL = "full";
+export let resolvedPatterns = new Map();
 
 export class DateTimeFormat implements intlDateTimeFormat {
     constructor(private locale?: string, private options?: intlDateTimeFormatOptions, private pattern?: string) {
@@ -200,7 +201,12 @@ export class DateTimeFormat implements intlDateTimeFormat {
             if (this.pattern) {
                 this._preparedPattern = this.pattern;
             } else {
-                this._preparedPattern = this.preparePattern(this.getCorrectPatternForLocale(), this.options);
+                if (resolvedPatterns.has({locale: this.locale, options: this.options})) {
+                    this._preparedPattern = resolvedPatterns.get({locale: this.locale, options: this.options});
+                } else {
+                    this._preparedPattern = this.preparePattern(this.getCorrectPatternForLocale(), this.options);
+                    resolvedPatterns.set({locale: this.locale, options: this.options}, this._preparedPattern);
+                }
             }
         }
         return this._preparedPattern;
