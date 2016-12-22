@@ -2,8 +2,9 @@ node_modules/
 .vscode/
 tests/platforms/
 tests/node_modules/
-example/node_modules/
-example/platforms/
-example/**/*.js
+examples/**/node_modules/
+examples/**/platforms/
+examples/**/*.js
+examples/**/*.js.map
 dist/
 src/**/*.js
