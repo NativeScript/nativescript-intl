@@ -3,7 +3,7 @@ import {
     NumberFormat as commonNumberFormat,
     FULL
 } from "./nativescript-intl-common";
-import { NumberFormatOptions } from "nativescript-intl";
+import { NumberFormatOptions } from "./nativescript-intl";
 
 let localesCache: Map<string, any> = new Map<string, any>();
 

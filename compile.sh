@@ -25,9 +25,9 @@ node_modules/.bin/tsc -p "$SOURCE_DIR" --outDir "$PACK_DIR"
 node_modules/tslint/bin/tslint --project "$SOURCE_DIR"/tsconfig.json --config "$SOURCE_DIR"/tslint.json
 
 # make commonjs bundle for ANDROID 
-node_modules/rollup/bin/rollup -c --environment PLATFORM:$ANDROID
+# node_modules/rollup/bin/rollup -c --environment PLATFORM:$ANDROID
 
 # make commonjs bundle for IOS
-node_modules/rollup/bin/rollup -c --environment PLATFORM:$IOS
+# node_modules/rollup/bin/rollup -c --environment PLATFORM:$IOS
 
 copy_package_files

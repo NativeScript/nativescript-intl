@@ -4,5 +4,6 @@ tests/platforms/
 tests/node_modules/
 example/node_modules/
 example/platforms/
+example/**/*.js
 dist/
 src/**/*.js

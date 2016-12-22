@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "module": "es6",
-        "target": "es6",
+        "module": "commonjs",
+        "target": "es5",
         "noImplicitAny": false,
         "removeComments": true,
         "preserveConstEnums": true,
@@ -13,14 +13,8 @@
     },
     "filesGlob": [
         "./**/*.ts",
+        "./**/*.d.ts",
         "!./node_modules/**/*.ts"
-    ],
-    "files": [
-		"references.d.ts",
-        "nativescript-intl-common.ts",
-        "nativescript-intl.android.ts",
-        "nativescript-intl.ios.ts",
-        "index.ts"
     ],
     "exclude": []
 }
