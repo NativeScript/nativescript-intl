@@ -6,13 +6,13 @@
   "nativescript": {
     "id": "org.nativescript.example",
     "tns-android": {
-      "version": "2.4.0"
+      "version": "2.5.0-next-2016-12-19-1539"
     }
   },
   "dependencies": {
+    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.9.tgz",
     "nativescript-theme-core": "^0.2.1",
-    "tns-core-modules": "2.4.0",
-    "nativescript-intl": "file:..\\dist\\nativescript-intl-0.0.9.tgz"
+    "tns-core-modules": "2.4.0"
   },
   "devDependencies": {
     "babel-traverse": "6.19.0",

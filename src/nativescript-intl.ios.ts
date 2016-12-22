@@ -3,7 +3,7 @@ import {
     NumberFormat as commonNumberFormat,
     FULL
 } from "./nativescript-intl-common";
-import { NumberFormatOptions } from "nativescript-intl";
+import { NumberFormatOptions } from "./nativescript-intl";
 
 export class DateTimeFormat extends commonDateTimeFormat {
     public getNativePattern(patternDefinition: {date?: string, time?: string}, locale?: string): string {

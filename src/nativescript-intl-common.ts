@@ -3,7 +3,7 @@ import {
     DateTimeFormatOptions as intlDateTimeFormatOptions,
     NumberFormat as intlNumberFormat,
     NumberFormatOptions as intlNumberFormatOptions
-} from "nativescript-intl";
+} from "./nativescript-intl";
 
 export const NUMERIC = "numeric";
 export const LONG = "long";
