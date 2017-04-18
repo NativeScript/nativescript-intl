@@ -9,7 +9,7 @@ IOS=ios;
 copy_package_files() {
     cp "$SOURCE_DIR"/package.json "$PACK_DIR"
     cp "$SOURCE_DIR"/*.md "$PACK_DIR"
-	cp "$SOURCE_DIR"/*.d.ts "$PACK_DIR"
+	rsync -av "$SOURCE_DIR"/*.d.ts --exclude="references.d.ts" "$PACK_DIR"
 }
 
 #clean dist folder from previous compilation
