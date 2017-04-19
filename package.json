@@ -5,9 +5,9 @@
       "create": "bash ./create.sh"
   },
   "devDependencies": {
-    "rollup": "^0.36.4",
-    "tns-platform-declarations": "^2.4.0-2016-09-28-1",
-    "tslint": "^4.0.2",
-    "typescript": "^2.0.6"
+    "rollup": "^0.41.6",
+    "tns-platform-declarations": "^3.0.0 || ^3.0.0-rc.1",
+    "tslint": "^5.1.0",
+    "typescript": "^2.2.2"
   }
 }
