@@ -1,6 +1,6 @@
 {
   "scripts": {
-      "tslint": "tslint --project src/tsconfig.json --config src/tslint.json",
+      "tslint": "tslint --project src/tsconfig.json --config src/tslint.json --type-check",
       "tsc": "tsc -p src/tsconfig.json",
       "create": "bash ./create.sh"
   },
