@@ -1,13 +1,14 @@
 {
   "scripts": {
-      "tslint": "tslint --project src/tsconfig.json --config src/tslint.json --type-check",
-      "tsc": "tsc -p src/tsconfig.json",
-      "create": "bash ./create.sh"
+    "clean": "npx rimraf node_modules package-lock.json && npm i",
+    "tslint": "tslint --project src/tsconfig.json --config src/tslint.json --type-check",
+    "tsc": "tsc -p src/tsconfig.json",
+    "create": "bash ./create.sh"
   },
   "devDependencies": {
-    "rollup": "^0.41.6",
-    "tns-platform-declarations": "^3.0.0 || ^3.0.0-rc.1",
-    "tslint": "^5.1.0",
-    "typescript": "^2.2.2"
+    "rollup": "^2.18.2",
+    "tns-platform-declarations": "~6.5.8",
+    "tslint": "^6.1.0",
+    "typescript": "^3.9.0"
   }
 }
