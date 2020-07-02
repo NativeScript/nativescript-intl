@@ -8,3 +8,4 @@ examples/**/*.js
 examples/**/*.js.map
 dist/
 src/**/*.js
+package-lock.json
