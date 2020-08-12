@@ -161,7 +161,7 @@ export class NumberFormat extends commonNumberFormat {
             new java.text.DecimalFormatSymbols(getNativeLocale(locale)) :
             new java.text.DecimalFormatSymbols();
         
-        if (options.currency !== void 0) {
+        if (options && options.currency !== void 0) {
             decimalFormatSymbols.setCurrency(java.util.Currency.getInstance(options.currency));
         }
         
