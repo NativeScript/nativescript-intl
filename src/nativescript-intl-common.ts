@@ -184,7 +184,7 @@ export class DateTimeFormat implements intlDateTimeFormat {
         let result = [];
         let i = 0;
         // remove leading delimiters
-        while (i < patternOptionsLength && (patternOptions[i].patternValue === "" || patternOptions[i].isDateElement === false)) { i++; }
+        while (patternOptions[i] && (patternOptions[i].patternValue === "" || patternOptions[i].isDateElement === false)) { i++; }
         for (i; i < patternOptionsLength; i++) {
             result.push(patternOptions[i].patternValue);
         }
