@@ -160,6 +160,11 @@ export class NumberFormat extends commonNumberFormat {
         let decimalFormatSymbols = locale ?
             new java.text.DecimalFormatSymbols(getNativeLocale(locale)) :
             new java.text.DecimalFormatSymbols();
+
+        if (options && options.currency !== void 0) {
+            decimalFormatSymbols.setCurrency(java.util.Currency.getInstance(options.currency));
+        }
+
         numberFormat.setDecimalFormatSymbols(decimalFormatSymbols);
 
         if (options && (options.style.toLowerCase() === "currency" && options.currencyDisplay === "code")) {
@@ -169,10 +174,6 @@ export class NumberFormat extends commonNumberFormat {
                 currrentPattern = currrentPattern.replace("¤", "¤¤");
                 numberFormat = new java.text.DecimalFormat(currrentPattern);
                 numberFormat.setDecimalFormatSymbols(decimalFormatSymbols);
-            }
-
-            if (options.currency !== void 0) {
-                decimalFormatSymbols.setCurrency(java.util.Currency.getInstance(options.currency));
             }
         }
 
